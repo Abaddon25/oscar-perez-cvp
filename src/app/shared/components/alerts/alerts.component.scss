@@ -1,0 +1,13 @@
+.alert {
+    position: fixed;
+    width: 100vw;
+    top: 110%;
+    -webkit-transition: all 1000ms ease-in-out;
+    -moz-transition: all 1000ms ease-in-out;
+    -ms-transition: all 1000ms ease-in-out;
+    -o-transition: all 1000ms ease-in-out;
+    transition: all 1000ms ease-in-out;
+    &.active {
+        top: 94%;
+    }
+}

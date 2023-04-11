@@ -1,0 +1,103 @@
+<div class="container-fluid">
+  <div class="row mb-4">
+    <div class="col">
+      <h3 class="text-center">Actualizar usuario</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="border container p-5">
+        <div class="row mb-3">
+          <div class="col">
+            <h5>Id usuario {{ idUser }}</h5>
+          </div>
+        </div>
+        <form [formGroup]="userForm">
+          <div class="row mb-2">
+            <div class="col">
+              <div class="mb-3">
+                <label for="name" class="form-label">Nombre usuario</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="name"
+                  placeholder="Pepito Perez"
+                  formControlName="name"
+                />
+                <small *ngIf="errorName" class="text-danger"
+                  >Nombre es obligatorio
+                </small>
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="name@example.com"
+                  formControlName="email"
+                />
+                <small *ngIf="errorEmailRequired" class="text-danger"
+                  >Correo electrónico es obligatorio
+                </small>
+                <small *ngIf="errorEmailFormat" class="text-danger"
+                  >Formato del correo es incorrecto
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Genero</label
+                >
+                <select class="form-select" formControlName="gender">
+                  <option value="">Seleccione una opción</option>
+                  <option [value]="gender.id" *ngFor="let gender of genders">
+                    {{ gender.description }}
+                  </option>
+                </select>
+                <small *ngIf="errorGender" class="text-danger"
+                  >Genero es obligatorio
+                </small>
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Estado</label
+                >
+                <select class="form-select" formControlName="status">
+                  <option value="">Seleccione una opción</option>
+                  <option [value]="state.id" *ngFor="let state of states">
+                    {{ state.description }}
+                  </option>
+                </select>
+                <small *ngIf="errorStatus" class="text-danger"
+                  >Estado es obligatorio
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col">
+              <button
+                class="btn btn-primary me-2"
+                (click)="saveUser()"
+                [disabled]="userForm.invalid"
+              >
+                Guardar
+              </button>
+              <button class="btn btn-danger" [routerLink]="['/all-users']">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
